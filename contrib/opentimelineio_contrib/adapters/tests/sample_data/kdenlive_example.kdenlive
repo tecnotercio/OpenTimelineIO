@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<mlt title="Anonymous Submission" LC_NUMERIC="en_US.UTF-8" producer="main_bin" version="6.17.0" root="C:/opt/home/kdenlive">
+<mlt title="Anonymous Submission" LC_NUMERIC="en_US.UTF-8" producer="main_bin" version="6.17.0" root="/opt/kdenlive">
  <profile frame_rate_num="25" sample_aspect_num="16" display_aspect_den="3" colorspace="601" progressive="0" description="DV/DVD PAL" display_aspect_num="4" frame_rate_den="1" width="720" height="576" sample_aspect_den="15"/>
  <producer title="Anonymous Submission" id="producer2" in="00:00:00.000" out="00:05:48.000">
   <property name="length">8701</property>
