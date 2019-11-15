@@ -31,7 +31,8 @@ class AdaptersKdenliveTest(unittest.TestCase, otio_test_utils.OTIOAssertions):
                                   tuple(c.media_reference.target_url
                                         for c in track
                                         if isinstance(c, otio.schema.Clip) and
-                                        isinstance(c.media_reference, otio.schema.ExternalReference)
+                                        isinstance(c.media_reference,
+                                                   otio.schema.ExternalReference)
                                         ))
 
         kdenlive_xml = otio.adapters.write_to_string(timeline, "kdenlive")
@@ -39,7 +40,7 @@ class AdaptersKdenliveTest(unittest.TestCase, otio_test_utils.OTIOAssertions):
 
         new_timeline = otio.adapters.read_from_string(kdenlive_xml, "kdenlive")
         # TODO: fix ""/null names
-        # self.assertJsonEqual(timeline, new_timeline)
+        self.assertJsonEqual(timeline, new_timeline)
 
 
 if __name__ == '__main__':

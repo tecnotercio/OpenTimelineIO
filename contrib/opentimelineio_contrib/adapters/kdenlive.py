@@ -30,7 +30,7 @@ import opentimelineio as otio
 
 
 def mlt_property(element, name):
-    return element.findtext(f"property[@name='{name}']")
+    return element.findtext("property[@name='{name}']")
 
 
 def time(clock, fps):
@@ -113,11 +113,15 @@ def read_from_string(input_str):
                         if kdenlive_id == "fadein":
                             clip.effects.append(otio.schema.Effect(
                                 effect_name="audio_fade_in",
-                                metadata={'duration': time(effect.get("out"), rate) - time(effect.get("in"), rate)}))
+                                metadata={'duration': time(
+                                    effect.get("out"), rate) - time(
+                                        effect.get("in"), rate)}))
                         elif kdenlive_id == "fadeout":
                             clip.effects.append(otio.schema.Effect(
                                 effect_name="audio_fade_out",
-                                metadata={'duration': time(effect.get("out"), rate) - time(effect.get("in"), rate)}))
+                                metadata={'duration': time(
+                                    effect.get("out"), rate) - time(
+                                        effect.get("in"), rate)}))
                         elif kdenlive_id == "fade_from_black":
                             clip.effects.append(otio.schema.Effect(
                                 effect_name="video_fade_in",
@@ -125,15 +129,19 @@ def read_from_string(input_str):
                         elif kdenlive_id == "fade_to_black":
                             clip.effects.append(otio.schema.Effect(
                                 effect_name="video_fade_out",
-                                metadata={'duration': time(effect.get("out"), rate) - time(effect.get("in"), rate)}))
+                                metadata={'duration': time(
+                                    effect.get("out"), rate) - time(
+                                        effect.get("in"), rate)}))
                         elif kdenlive_id == "volume":
                             clip.effects.append(otio.schema.Effect(
                                 effect_name="volume",
-                                metadata={'keyframes': keyframes(mlt_property(effect, "level"), rate)}))
+                                metadata={'keyframes': keyframes(
+                                            mlt_property(effect, "level"), rate)}))
                         elif kdenlive_id == "brightness":
                             clip.effects.append(otio.schema.Effect(
                                 effect_name="brightness",
-                                metadata={'keyframes': keyframes(mlt_property(effect, "level"), rate)}))
+                                metadata={'keyframes': keyframes(
+                                            mlt_property(effect, "level"), rate)}))
                     track.append(clip)
         timeline.tracks.append(track)
 
@@ -291,7 +299,8 @@ def write_to_string(input_otio):
 
 
 if __name__ == "__main__":
-    # timeline = otio.adapters.read_from_file("tests/sample_data/kdenlive_example.kdenlive")
+    # timeline = otio.adapters.read_from_file(
+    #             "tests/sample_data/kdenlive_example.kdenlive")
     timeline = read_from_string(
         open("tests/sample_data/kdenlive_example.kdenlive", "r").read())
     # print(otio.adapters.write_to_string(timeline, "otio_json"))
